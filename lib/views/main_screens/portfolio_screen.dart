@@ -1,6 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/view_models/visibility_provider.dart';
+import 'package:portfolio/views/project_details_screen.dart/project_details_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
@@ -150,34 +151,43 @@ class _ProjectTileState extends State<ProjectTile>
               ),
             ),
           ),
-          Container(
-            height: (widget.size.height - 8) * _animation!.value,
-            width: widget.size.width / 2,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Colors.black38,
-                  Colors.black54,
-                ],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-              ),
-            ),
-            alignment: Alignment.center,
+          InkWell(
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (ctx) => ProjectDetailsScreen(),
+                ),
+              );
+            },
             child: Container(
+              height: (widget.size.height - 8) * _animation!.value,
+              width: widget.size.width / 2,
               decoration: BoxDecoration(
-                border: Border.all(color: Colors.white),
-                borderRadius: BorderRadius.circular(4),
+                gradient: LinearGradient(
+                  colors: [
+                    Colors.black38,
+                    Colors.black54,
+                  ],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                ),
               ),
-              padding: EdgeInsets.symmetric(
-                horizontal: 16,
-                vertical: 8,
-              ),
-              child: const Text(
-                'Open Project',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
+              alignment: Alignment.center,
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.white),
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                padding: EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 8,
+                ),
+                child: const Text(
+                  'Open Project',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                  ),
                 ),
               ),
             ),
