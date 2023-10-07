@@ -137,13 +137,13 @@ class _ProjectTileState extends State<ProjectTile>
       child: Stack(
         children: [
           Container(
-            color: Colors.white,
+            color: Colors.deepPurpleAccent,
             padding: const EdgeInsets.symmetric(vertical: 16.0),
             child: Container(
               width: widget.size.width / 2,
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                color: Colors.white,
+                // color: Colors.white,
                 image: DecorationImage(
                   image: AssetImage('assets/images/app${widget.i + 1}.png'),
                   fit: BoxFit.fitHeight,
@@ -155,14 +155,14 @@ class _ProjectTileState extends State<ProjectTile>
             onTap: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (ctx) => ProjectDetailsScreen(),
+                  builder: (ctx) => ProjectDetailsScreen(widget.i),
                 ),
               );
             },
             child: Container(
               height: (widget.size.height - 8) * _animation!.value,
               width: widget.size.width / 2,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
                     Colors.black38,

@@ -6,6 +6,7 @@ import 'dart:ui';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:portfolio/views/helper_functions.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 import 'intro_screen.dart';
@@ -244,11 +245,18 @@ class Social extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        SocialIcon('linkedIn'),
+        SocialIcon(
+          'linkedIn',
+          onTap: () {
+            launchHelper('https://www.linkedin.com/in/saswatasaha/');
+          },
+        ),
         SizedBox(
           width: 16,
         ),
-        SocialIcon('git'),
+        SocialIcon('git', onTap: () {
+          launchHelper('https://github.com/theNativeGod');
+        }),
       ],
     );
   }
@@ -257,10 +265,12 @@ class Social extends StatelessWidget {
 class SocialIcon extends StatefulWidget {
   const SocialIcon(
     this.icon, {
+    required this.onTap,
     super.key,
   });
 
   final String icon;
+  final onTap;
 
   @override
   State<SocialIcon> createState() => _SocialIconState();
@@ -321,30 +331,33 @@ class _SocialIconState extends State<SocialIcon>
                   ),
                 ),
               ),
-              Container(
-                height: 40,
-                width: 40,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(4),
-                  border: Border.all(
-                    color: Colors.white54,
-                    width: 1,
-                  ),
+              InkWell(
+                onTap: widget.onTap,
+                child: Container(
+                  height: 40,
+                  width: 40,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(4),
+                    border: Border.all(
+                      color: Colors.white54,
+                      width: 1,
+                    ),
 
-                  gradient: const LinearGradient(
-                    colors: [
-                      Colors.white54,
-                      Colors.white10,
-                    ],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomCenter,
-                  ),
+                    gradient: const LinearGradient(
+                      colors: [
+                        Colors.white54,
+                        Colors.white10,
+                      ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomCenter,
+                    ),
 
-                  // color: Colors.deepPurpleAccent,
+                    // color: Colors.deepPurpleAccent,
+                  ),
+                  alignment: Alignment.center,
+                  padding: const EdgeInsets.all(8),
+                  child: Image.asset('assets/images/${widget.icon}.png'),
                 ),
-                alignment: Alignment.center,
-                padding: const EdgeInsets.all(8),
-                child: Image.asset('assets/images/${widget.icon}.png'),
               ),
             ],
           ),
