@@ -1,8 +1,12 @@
+import 'dart:html';
+
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/text.dart';
+import 'package:portfolio/view_models/frame_provider.dart';
 import 'package:portfolio/view_models/visibility_provider.dart';
 import 'package:portfolio/views/main_screens/home_screen.dart';
+import 'package:portfolio/views/mobile_screens/mobile_home.dart';
 import 'package:portfolio/views/project_details_screen.dart/project_details_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -10,8 +14,25 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    window.addEventListener(
+        'resize',
+        (event) => {
+              setState(
+                () {},
+              )
+            });
+    super.initState();
+  }
 
   // This widget is the root of your application.
   @override
@@ -21,32 +42,19 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (ctx) => VisibilityProvider(),
         ),
+        ChangeNotifierProvider(
+          create: (ctx) => FrameProvider(),
+        ),
       ],
-      
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Portfolio',
         theme: ThemeData(
           fontFamily: 'OdudoMono',
-          // This is the theme of your application.
-          //
-          // TRY THIS: Try running your application with "flutter run". You'll see
-          // the application has a blue toolbar. Then, without quitting the app,
-          // try changing the seedColor in the colorScheme below to Colors.green
-          // and then invoke "hot reload" (save your changes or press the "hot
-          // reload" button in a Flutter-supported IDE, or press "r" if you used
-          // the command line to start the app).
-          //
-          // Notice that the counter didn't reset back to zero; the application
-          // state is not lost during the reload. To reset the state, use hot
-          // restart instead.
-          //
-          // This works for code too, not just values: Most code changes can be
-          // tested with just a hot reload.
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: HomeScreen(),
+        home: window.innerWidth! < 700 ? MobileHome() : HomeScreen(),
       ),
     );
   }
