@@ -46,7 +46,7 @@ class ProjectSterling extends StatelessWidget {
                 height: 16,
               ),
               Paragraph(
-                heading: 'Technical Analysis of the Toya App',
+                heading: 'Technical Analysis of the Sterling App',
                 text:
                     'The app is made in Flutter and a PHP back-end. I was only responsible for the front-end of this app, so I will focus on describing the front-end part.\n\nFront-end: Flutter with Provider State Management, and MVVM architecture, was used in the front-end. The trip requests, dashboard data, history page data, as well as login data are fetched from backend.\n\nAuthentication: Firebase Phone OTP Authentication is used for authenticating the users.\n\nStorage: Firebase storage is used to store the user profile images.',
               ),

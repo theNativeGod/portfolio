@@ -27,7 +27,7 @@ class _DownlaodResumeTileState extends State<DownlaodResumeTile> {
       child: InkWell(
         onTap: () {
           launchHelper(
-              '');
+              'https://drive.google.com/file/d/1LQJtcOFgeVsokHDnUn7M7gIx3WtKgp_M/view?usp=drive_link');
         },
         child: Container(
           decoration: BoxDecoration(

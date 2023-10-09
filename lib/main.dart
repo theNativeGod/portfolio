@@ -22,9 +22,10 @@ class MyApp extends StatelessWidget {
           create: (ctx) => VisibilityProvider(),
         ),
       ],
+      
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
+        title: 'Portfolio',
         theme: ThemeData(
           fontFamily: 'OdudoMono',
           // This is the theme of your application.
