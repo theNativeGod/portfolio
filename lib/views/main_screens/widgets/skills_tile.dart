@@ -40,8 +40,9 @@ class _SkillsTileState extends State<SkillsTile> {
                 )
               : Container(
                   padding: const EdgeInsets.all(16),
-                  child: FittedBox(
+                  child: const FittedBox(
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SkillTile(
                           image: 'assets/images/dart.png',

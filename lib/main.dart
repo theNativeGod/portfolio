@@ -4,6 +4,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/text.dart';
 import 'package:portfolio/view_models/frame_provider.dart';
+import 'package:portfolio/view_models/mobile_screen_provider.dart';
 import 'package:portfolio/view_models/visibility_provider.dart';
 import 'package:portfolio/views/main_screens/home_screen.dart';
 import 'package:portfolio/views/mobile_screens/mobile_home.dart';
@@ -44,6 +45,9 @@ class _MyAppState extends State<MyApp> {
         ),
         ChangeNotifierProvider(
           create: (ctx) => FrameProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (ctx) => MobileScreenProvider(),
         ),
       ],
       child: MaterialApp(
